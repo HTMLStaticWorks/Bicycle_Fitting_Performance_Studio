@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rider Dashboard &amp; Biomechanical Telemetry | VELOMETRIC™</title>
+  <meta name="description" content="Manage your bike fitting sessions, view historical saddle pressure heatmaps, CAD coordinates, and live aerodynamic CdA drag reports in your Rider Dashboard.">
+  
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/favicon.png">
+
+</head>
+<body data-page="dashboard">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="brand-logo" aria-label="VELOMETRIC Studio Home">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"></circle><circle cx="5.5" cy="17.5" r="3.5"></circle><circle cx="15" cy="5" r="1"></circle><path d="M12 17.5V14l-3-3 4-3 2 3h3"></path></svg>
+        </div>
+        <span>VELOMETRIC</span>
+      </a>
+
+      <div class="nav-actions">
+        <button class="rtl-toggle-btn" aria-label="Toggle RTL Layout">RTL</button>
+        <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ====================================================================
+         SECTION 1 OF 4: ATHLETE IDENTITY & ACTIVE STATUS HEADER
+         ==================================================================== -->
+    <section class="section dash-header-section">
+      <div class="container">
+        <div class="dash-identity-banner">
+          <div class="dash-identity-rider">
+            <div class="rider-avatar dash-rider-avatar">MC</div>
+            <div class="dash-rider-details">
+              <div class="dash-rider-name-row">
+                <h1 class="dash-rider-name">Mark Cavendish</h1>
+                <span class="badge-status status-completed">Pro Athlete Tier</span>
+              </div>
+              <p class="dash-rider-meta">
+                Primary Bike: <strong>Specialized S-Works Tarmac SL8 (52cm)</strong> <span class="meta-divider">|</span> Last Studio Session: <strong>Sep 14, 2026</strong>
+              </p>
+            </div>
+          </div>
+
+          <div class="dash-header-actions">
+            <button class="btn btn-secondary btn-sm" onclick="alert('Digital 3D CAD Geometry JSON & PDF downloaded to your device.')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Export CAD Coordinates</span>
+            </button>
+            <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-dash-target=\'panel-booking\']').click()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+              <span>Book Adjustment</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 2 OF 4: MAIN DASHBOARD NAVIGATION & SUB-MODULE ENGINE
+         (Includes all 7 sub-modules: Overview, Book/Manage, History, Reports,
+          Adjustment Scheduler, Invoices, Profile & Garage + Logout)
+         ==================================================================== -->
+    <section class="section" style="padding-top: 0; padding-bottom: 0;">
+      <div class="dashboard-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="dashboard-sidebar" aria-label="Dashboard Navigation">
+          <button class="dash-nav-btn is-active" data-dash-target="panel-overview">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            <span>Overview &amp; Stats</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-booking">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+            <span>Book / Manage Fits</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-history">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            <span>Measurement History</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-reports">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            <span>Performance Reports</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-adjustments">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            <span>60-Day Adjuster</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-invoices">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span>Payments &amp; Invoices</span>
+          </button>
+
+          <button class="dash-nav-btn" data-dash-target="panel-garage">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            <span>Bike Garage &amp; Specs</span>
+          </button>
+
+          <!-- Logout Button -->
+          <button class="dash-nav-btn btn-logout" style="margin-top: auto;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            <span>Logout Session</span>
+          </button>
+        </aside>
+
+        <!-- Dynamic Main Panel Container -->
+        <div class="dashboard-main">
+          
+          <!-- SUB-MODULE 1: OVERVIEW -->
+          <div class="dash-panel is-active" id="panel-overview">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Biomechanical Telemetry Overview</h2>
+            
+            <div class="dash-stat-grid">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Saddle Height</span>
+                  <span class="stat-trend trend-neutral">● Verified</span>
+                </div>
+                <div class="stat-num text-volt">748 <span style="font-size: 1rem; color: var(--text-muted);">mm</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">BB center to top of saddle</p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Cockpit Reach</span>
+                  <span class="stat-trend trend-up">↑ +4mm</span>
+                </div>
+                <div class="stat-num text-teal">392 <span style="font-size: 1rem; color: var(--text-muted);">mm</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Tip of saddle to bar center</p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Handlebar Drop</span>
+                  <span class="stat-trend trend-neutral">● Neutral</span>
+                </div>
+                <div class="stat-num">88 <span style="font-size: 1rem; color: var(--text-muted);">mm</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Saddle top to bar drop</p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Threshold Power</span>
+                  <span class="stat-trend trend-up">↑ +24W</span>
+                </div>
+                <div class="stat-num text-lime">342 <span style="font-size: 1rem; color: var(--text-muted);">W</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">20-minute calibrated FTP</p>
+              </div>
+            </div>
+
+            <!-- Upcoming Appointment Card -->
+            <div class="dash-upcoming-card">
+              <div class="dash-upcoming-info">
+                <span class="badge-status status-confirmed">Upcoming Studio Session</span>
+                <h3 style="font-size: 1.25rem; margin: 8px 0 4px; color: #FFFFFF;">Follow-Up Aero Fine-Tuning</h3>
+                <p style="font-size: 0.875rem; color: var(--text-secondary);">
+                  October 22, 2026 at 10:00 AM PST • Bay 2 with Dr. Marcus Vance
+                </p>
+              </div>
+              <div class="dash-upcoming-actions">
+                <button class="btn btn-secondary btn-sm" onclick="alert('Session rescheduled link sent to calendar.')">Reschedule</button>
+                <button class="btn btn-primary btn-sm" onclick="alert('Direction & prep checklist sent to your SMS.')">Session Details</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 2: BOOK / MANAGE APPOINTMENTS -->
+          <div class="dash-panel" id="panel-booking">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Book &amp; Manage Appointments</h2>
+
+            <div class="dash-booking-grid">
+              <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 28px;">
+                <h3 style="font-size: 1.15rem; margin-bottom: 18px;">Schedule New Fit Slot</h3>
+                <form id="dashboard-booking-form">
+                  <div class="form-group">
+                    <label class="form-label" for="book-service">Service Tier</label>
+                    <select id="book-service" class="form-select" required>
+                      <option value="Pro Dynamic 3D Fit ($349)">Pro Dynamic 3D Fit ($349)</option>
+                      <option value="Aero TT / Tri Fit ($449)">Aero TT / Triathlon Precision Fit ($449)</option>
+                      <option value="60-Day Free Follow-Up ($0)">60-Day Free Follow-Up ($0)</option>
+                      <option value="Footbed Custom Molding ($149)">Footbed Custom Molding ($149)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="book-fitter">Master Fitter</label>
+                    <select id="book-fitter" class="form-select">
+                      <option value="Dr. Marcus Vance, DPT">Dr. Marcus Vance, DPT (Bay 1)</option>
+                      <option value="Elena Rostova, MSc">Elena Rostova, MSc (Bay 2)</option>
+                      <option value="Samira Patel, PT">Samira Patel, PT (Bay 3)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="book-date">Session Date</label>
+                    <input type="date" id="book-date" class="form-input" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary" style="width: 100%;">Confirm Reservation</button>
+                </form>
+              </div>
+
+              <div>
+                <h3 style="font-size: 1.15rem; margin-bottom: 18px;">Active &amp; Past Bookings</h3>
+                <div class="data-table-wrapper">
+                  <table class="data-table">
+                    <thead>
+                      <tr>
+                        <th>Service</th>
+                        <th>Date</th>
+                        <th>Master Fitter</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody id="appointments-table-body">
+                      <tr>
+                        <td><strong>Aero Fine-Tuning</strong></td>
+                        <td>Oct 22, 2026</td>
+                        <td>Dr. Marcus Vance</td>
+                        <td><span class="badge-status status-confirmed">Confirmed</span></td>
+                        <td><button class="btn btn-sm btn-secondary" onclick="this.closest('tr').remove()">Cancel</button></td>
+                      </tr>
+                      <tr>
+                        <td><strong>Pro Dynamic 3D Fit</strong></td>
+                        <td>Sep 14, 2026</td>
+                        <td>Elena Rostova</td>
+                        <td><span class="badge-status status-completed">Completed</span></td>
+                        <td><button class="btn btn-sm btn-secondary" onclick="alert('Viewing archival recording...')">View Video</button></td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 3: FIT MEASUREMENT HISTORY (Interactive Timeline & Charts) -->
+          <div class="dash-panel" id="panel-history">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Fit Measurement History (2025–2026)</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 24px;">
+              Track how your saddle height, reach, and drop evolved across fits as your thoracic mobility improved.
+            </p>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; height: 380px; margin-bottom: 30px;">
+              <canvas id="fitHistoryChart"></canvas>
+            </div>
+
+            <div class="data-table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Bike</th>
+                    <th>Saddle Ht</th>
+                    <th>Reach</th>
+                    <th>Drop</th>
+                    <th>Knee Extension</th>
+                    <th>Fitter</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sep 14, 2026</td>
+                    <td>S-Works Tarmac SL8</td>
+                    <td class="text-volt">748 mm</td>
+                    <td>392 mm</td>
+                    <td>88 mm</td>
+                    <td class="text-teal">39.1°</td>
+                    <td>Dr. Marcus Vance</td>
+                  </tr>
+                  <tr>
+                    <td>Mar 02, 2026</td>
+                    <td>S-Works Tarmac SL8</td>
+                    <td>747 mm</td>
+                    <td>390 mm</td>
+                    <td>86 mm</td>
+                    <td>38.2°</td>
+                    <td>Elena Rostova</td>
+                  </tr>
+                  <tr>
+                    <td>May 18, 2025</td>
+                    <td>Cervelo S5</td>
+                    <td>742 mm</td>
+                    <td>385 mm</td>
+                    <td>80 mm</td>
+                    <td>36.5°</td>
+                    <td>Dr. Marcus Vance</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 4: PERFORMANCE DATA REPORTS (CdA & Session Results) -->
+          <div class="dash-panel" id="panel-reports">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Performance Data &amp; Aerodynamic Reports</h2>
+            <p style="color: var(--text-secondary); font-size: 0.9375rem; margin-bottom: 24px;">
+              Aerodynamic drag area (CdA) across differing cockpit configurations from our virtual wind tunnel telemetry.
+            </p>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; height: 360px; margin-bottom: 30px;">
+              <canvas id="cdaPerformanceChart"></canvas>
+            </div>
+
+            <div class="dash-reports-grid">
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Baseline Drag Area</span>
+                </div>
+                <div class="stat-num">0.298 <span style="font-size: 1rem; color: var(--text-muted);">m²</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Standard hood riding position</p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Current Optimized CdA</span>
+                  <span class="stat-trend trend-up">↓ -23.5% Drag</span>
+                </div>
+                <div class="stat-num text-teal">0.228 <span style="font-size: 1rem; color: var(--text-muted);">m²</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Aero hoods with 38cm narrow bar</p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Speed at 300W</span>
+                  <span class="stat-trend trend-up">↑ +3.8 km/h</span>
+                </div>
+                <div class="stat-num text-lime">44.2 <span style="font-size: 1rem; color: var(--text-muted);">km/h</span></div>
+                <p style="font-size: 0.75rem; color: var(--text-secondary);">Calculated flat road sea-level</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 5: FOLLOW-UP ADJUSTMENT SCHEDULER (60-Day Guarantee) -->
+          <div class="dash-panel" id="panel-adjustments">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">60-Day Complimentary Follow-Up Window</h2>
+            
+            <div style="background: rgba(0, 217, 192, 0.08); border: 1px solid var(--accent-teal); border-radius: var(--radius-md); padding: 24px; margin-bottom: 28px;">
+              <div class="dash-guarantee-banner">
+                <div>
+                  <h3 style="font-size: 1.2rem; color: #FFFFFF; margin-bottom: 4px;">42 Days Remaining in Free Fine-Tuning</h3>
+                  <p style="font-size: 0.875rem; color: var(--text-secondary);">
+                    Your session on Sep 14, 2026 includes free tweaks until November 14, 2026.
+                  </p>
+                </div>
+                <button class="btn btn-teal btn-sm" onclick="alert('Priority follow-up bay requested. You will receive an SMS within 2 hours.')">Request Priority Fine-Tune</button>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 16px;">Log Outdoor Road Observations</h3>
+              <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px;">
+                Note any sensations experienced during your first 200km post-fit (e.g. saddle pressure after hour 3, wrist fatigue, or cleat angle):
+              </p>
+              <textarea class="form-textarea" rows="4" placeholder="e.g. Did 120km Saturday. Zero lower back pain. Felt slight pressure on right big toe on climbs..."></textarea>
+              <button class="btn btn-secondary btn-sm" style="margin-top: 14px;" onclick="alert('Observation note logged to Dr. Marcus Vance.')">Save Note for Fitter</button>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 6: PAYMENTS & INVOICES -->
+          <div class="dash-panel" id="panel-invoices">
+            <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Billing &amp; Medical Receipts</h2>
+
+            <div class="data-table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Invoice ID</th>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Receipt</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>#INV-2026-9481</strong></td>
+                    <td>Sep 14, 2026</td>
+                    <td>Pro Dynamic 3D Bike Fit + Cleat Wedge Kit</td>
+                    <td>$349.00</td>
+                    <td><span class="badge-status status-completed">Paid</span></td>
+                    <td><button class="btn btn-sm btn-secondary" onclick="viewInvoice('#INV-2026-9481', '$349.00', 'Pro Dynamic 3D Bike Fit')">Download PDF</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>#INV-2026-8104</strong></td>
+                    <td>Mar 02, 2026</td>
+                    <td>Aero Cockpit Consultation &amp; Shims</td>
+                    <td>$149.00</td>
+                    <td><span class="badge-status status-completed">Paid</span></td>
+                    <td><button class="btn btn-sm btn-secondary" onclick="viewInvoice('#INV-2026-8104', '$149.00', 'Aero Cockpit Consultation')">Download PDF</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- SUB-MODULE 7: BIKE GARAGE & SPECS -->
+          <div class="dash-panel" id="panel-garage">
+            <div class="dash-garage-header">
+              <h2 style="font-size: 1.35rem; margin: 0;">Bike Garage &amp; Hardware Specs</h2>
+              <button class="btn btn-primary btn-sm" id="add-bike-btn">+ Add Bicycle</button>
+            </div>
+
+            <div id="bike-garage-list">
+              <div class="stat-card" style="margin-bottom: 16px;">
+                <div class="stat-header">
+                  <span class="stat-title">Road Race Setup</span>
+                  <span class="badge-status status-completed">Active Studio Fit</span>
+                </div>
+                <div class="stat-num" style="font-size: 1.4rem;">Specialized S-Works Tarmac SL8</div>
+                <p style="font-size: 0.84375rem; color: var(--text-secondary); margin-top: 6px;">
+                  Saddle: Specialized Power Pro Mirror 143mm (Tilt: -1.5°) | Cranks: 167.5mm | Bar: Roval Rapide 380mm | Cleats: Shimano Blue (1° float)
+                </p>
+              </div>
+
+              <div class="stat-card">
+                <div class="stat-header">
+                  <span class="stat-title">Time Trial / Aero</span>
+                  <span class="badge-status status-confirmed">Scheduled Oct 22</span>
+                </div>
+                <div class="stat-num" style="font-size: 1.4rem;">Canyon Speedmax CFR Disc</div>
+                <p style="font-size: 0.84375rem; color: var(--text-secondary); margin-top: 6px;">
+                  Saddle: ISM PN 3.1 | Extensions: Ergon Custom 20° Angled | Cranks: 155mm
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 3 OF 4: STUDIO DIAGNOSTIC BAY STATUS & LIVE CHANNEL
+         ==================================================================== -->
+    <section class="section" style="padding-top: 50px; padding-bottom: 50px; background: var(--bg-secondary);">
+      <div class="container">
+        <div class="dash-bays-grid">
+          <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="pulse-dot"></span>
+              <h4 style="font-size: 1.05rem; color: #FFFFFF;">Bay 1 Status: Online</h4>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">
+              STT 3D kinematic optical cameras calibrated at 09:00 AM PST. Laser alignment grid verified.
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="pulse-dot" style="background: var(--accent-teal); box-shadow: 0 0 10px var(--accent-teal);"></span>
+              <h4 style="font-size: 1.05rem; color: #FFFFFF;">GebioMized Mat #3</h4>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">
+              Zero drift recorded across 1,000 cycles. Pressure threshold sensitivity calibrated to 0.01 kg/cm².
+            </p>
+          </div>
+
+          <div style="background: var(--bg-card); padding: 24px; border-radius: var(--radius-md); border: 1px solid var(--border-subtle);">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 10px;">
+              <span class="pulse-dot" style="background: var(--accent-volt); box-shadow: 0 0 10px var(--accent-volt);"></span>
+              <h4 style="font-size: 1.05rem; color: #FFFFFF;">Direct Fitter Chat</h4>
+            </div>
+            <p style="font-size: 0.8125rem; color: var(--text-secondary);">
+              Assigned clinician: <strong>Dr. Marcus Vance</strong>. Typical response time is under 3 hours.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SECTION 4 OF 4: TELEMETRY EXPORT & COMPLIANCE
+         ==================================================================== -->
+    <section class="section" style="padding-top: 40px; padding-bottom: 50px;">
+      <div class="container text-center">
+        <div style="max-width: 640px; margin: 0 auto;">
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px;">
+            VELOMETRIC™ Laboratory ID: <strong>SF-LAB-8912</strong> • HIPAA/GDPR Encrypted Biometric Records
+          </p>
+          <div style="display: flex; justify-content: center; gap: 14px;">
+            <a href="index.html" class="btn btn-secondary btn-sm">Return To Public Site</a>
+            <button class="btn btn-secondary btn-sm btn-logout">Logout Session</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+
+  <!-- Plugins & Scripts -->
+  <script src="assets/js/plugins/chart.min.js"></script>
+  <script src="assets/js/3d-effects.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/dashboard.js"></script>
+</body>
+</html>

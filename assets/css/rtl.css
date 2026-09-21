@@ -1,0 +1,107 @@
+/* ==========================================================================
+   VELOMETRIC™ | RTL Support Stylesheet (dir="rtl")
+   ========================================================================== */
+
+[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+[dir="rtl"] body {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+[dir="rtl"] .skip-link {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] .nav-menu {
+  padding-right: 0;
+}
+
+[dir="rtl"] .auth-top-bar {
+  justify-content: flex-start;
+}
+
+[dir="rtl"] .auth-form-options label {
+  text-align: right;
+}
+
+@media (max-width: 1032px) {
+  [dir="rtl"] .nav-actions {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  [dir="rtl"] .hamburger-btn {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  [dir="rtl"] .nav-menu {
+    left: 0;
+    right: 0;
+  }
+}
+
+[dir="rtl"] .nav-link.active::after {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .brand-logo {
+  flex-direction: row;
+}
+
+[dir="rtl"] .hero-ctas {
+  flex-direction: row;
+}
+
+[dir="rtl"] .section-header {
+  text-align: center;
+}
+
+[dir="rtl"] .card-center {
+  text-align: center;
+}
+
+[dir="rtl"] .card-title,
+[dir="rtl"] .card-desc {
+  text-align: center;
+}
+
+[dir="rtl"] .price-features {
+  text-align: right;
+}
+
+[dir="rtl"] .telemetry-chip.chip-top {
+  right: auto;
+  left: 20px;
+}
+
+[dir="rtl"] .telemetry-chip.chip-bottom {
+  left: auto;
+  right: 20px;
+}
+
+[dir="rtl"] .dashboard-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--border-subtle);
+}
+
+[dir="rtl"] .dash-nav-btn {
+  text-align: right;
+}
+
+[dir="rtl"] .data-table {
+  text-align: right;
+}
+
+[dir="rtl"] .accordion-header {
+  text-align: right;
+}
+
+[dir="rtl"] .btn svg {
+  transform: scaleX(-1);
+}

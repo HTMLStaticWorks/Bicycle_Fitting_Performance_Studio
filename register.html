@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Athlete Account | VELOMETRIC™ Studio</title>
+  <meta name="description" content="Register your VELOMETRIC Athlete Account to manage bike fitting appointments, access 3D CAD frame measurements, and view saddle pressure telemetry.">
+  <meta name="keywords" content="register bike fit account, athlete portal sign up, velometric registration, cycling telemetry account">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="alternate icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/dark-mode.css">
+  <link rel="stylesheet" href="assets/css/rtl.css">
+</head>
+<body data-page="register" style="position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; background: var(--bg-primary);">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <main id="main-content" style="padding: 40px 16px 60px; width: 100%;">
+    <!-- Utility Controls (RTL + Theme Toggle) fully outside card box -->
+    <div class="auth-top-bar wide">
+      <button class="rtl-toggle-btn" aria-label="Toggle RTL Layout">RTL</button>
+      <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+      </button>
+    </div>
+
+    <div class="auth-card wide">
+      
+      <!-- Logo Header -->
+      <div style="text-align: center; margin-bottom: 28px;">
+        <a href="index.html" class="brand-logo" aria-label="VELOMETRIC Studio Home" style="display: inline-flex; margin-bottom: 16px;">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"></circle><circle cx="5.5" cy="17.5" r="3.5"></circle><circle cx="15" cy="5" r="1"></circle><path d="M12 17.5V14l-3-3 4-3 2 3h3"></path></svg>
+          </div>
+          <span>VELOMETRIC</span>
+        </a>
+        <h1 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 8px; color: var(--text-primary);">Create Athlete Account</h1>
+        <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; margin: 0;">
+          Register to manage your appointments, view clinical telemetry records, and access care instructions.
+        </p>
+      </div>
+
+      <!-- Registration Form -->
+      <form id="rider-register-form-page" data-validate action="dashboard.html">
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="reg-fullname">Full Legal Name <span style="color: var(--accent-volt);">*</span></label>
+          <input type="text" id="reg-fullname" class="form-input" placeholder="e.g. Sarah Jenkins" required>
+          <div class="form-error"></div>
+        </div>
+
+        <!-- Email & Phone 2-Col Grid -->
+        <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="reg-email-page">Email Address <span style="color: var(--accent-volt);">*</span></label>
+            <input type="email" id="reg-email-page" class="form-input" placeholder="sarah@example.com" required>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-phone">Phone Number <span style="color: var(--accent-volt);">*</span></label>
+            <input type="tel" id="reg-phone" class="form-input" placeholder="(555) 234-5678" required>
+            <div class="form-error"></div>
+          </div>
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="form-group">
+          <label class="form-label" for="reg-dob">Date of Birth <span style="color: var(--accent-volt);">*</span></label>
+          <input type="date" id="reg-dob" class="form-input" required>
+          <div class="form-error"></div>
+        </div>
+
+        <!-- Password & Confirm Password 2-Col Grid -->
+        <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+          <div class="form-group">
+            <label class="form-label" for="reg-pass-page">Password <span style="color: var(--accent-volt);">*</span></label>
+            <input type="password" id="reg-pass-page" class="form-input" placeholder="••••••••" required>
+            <div class="form-error"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="reg-pass-confirm">Confirm Password <span style="color: var(--accent-volt);">*</span></label>
+            <input type="password" id="reg-pass-confirm" class="form-input" placeholder="••••••••" required>
+            <div class="form-error"></div>
+          </div>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div style="margin-top: 8px; margin-bottom: 24px;">
+          <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.8125rem; color: var(--text-secondary); cursor: pointer;">
+            <input type="checkbox" required style="margin-top: 3px; accent-color: var(--accent-teal);">
+            <span>I agree to the <a href="#" class="text-teal" style="text-decoration: underline;">Terms of Service</a>, <a href="#" class="text-teal" style="text-decoration: underline;">Privacy Policy</a>, and studio consent protocols.</span>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-teal" style="width: 100%; justify-content: center; padding: 14px 20px; font-weight: 700; gap: 8px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="17" y1="11" x2="23" y2="11"></line></svg>
+          <span>Complete Registration</span>
+        </button>
+      </form>
+
+      <!-- Divider -->
+      <div style="display: flex; align-items: center; margin: 28px 0; color: var(--text-muted); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">
+        <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+        <span style="padding: 0 14px;">OR CONTINUE WITH</span>
+        <div style="flex: 1; height: 1px; background: var(--border-subtle);"></div>
+      </div>
+
+      <!-- Social Sign-up Buttons -->
+      <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <button type="button" class="btn btn-secondary" style="justify-content: center; gap: 10px; width: 100%; padding: 12px;" onclick="window.location.href='dashboard.html'">
+          <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.7 14.8 1 12 1 7.5 1 3.7 3.6 1.9 7.3l3.7 2.9C6.5 7.4 9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.6h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.9z"/><path fill="#FBBC05" d="M5.6 14.8c-.3-.8-.4-1.8-.4-2.8s.1-2 .4-2.8L1.9 6.3C.7 8.7 0 10.3 0 12s.7 3.3 1.9 5.7l3.7-2.9z"/><path fill="#34A853" d="M12 23c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3 0-5.5-2.4-6.4-5.2L1.9 16C3.7 19.7 7.5 23 12 23z"/></svg>
+          <span>Google</span>
+        </button>
+
+        <button type="button" class="btn btn-secondary" style="justify-content: center; gap: 10px; width: 100%; padding: 12px;" onclick="window.location.href='dashboard.html'">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.34c.67-.82 1.13-1.97.99-3.14-1 .04-2.2.67-2.91 1.5-.64.74-1.2 1.92-1.05 3.06 1.12.09 2.26-.56 2.97-1.42z"/></svg>
+          <span>Apple</span>
+        </button>
+      </div>
+
+      <!-- Already Registered Link -->
+      <div style="text-align: center; margin-top: 32px; font-size: 0.875rem; color: var(--text-secondary);">
+        Already registered? <a href="login.html" class="text-teal" style="font-weight: 600;">Sign in here</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Plugins & Scripts -->
+  <script src="assets/js/3d-effects.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    document.getElementById('rider-register-form-page').addEventListener('submit', (e) => {
+      e.preventDefault();
+      localStorage.setItem('velometric_auth', 'true');
+      window.location.href = 'dashboard.html';
+    });
+  </script>
+</body>
+</html>
