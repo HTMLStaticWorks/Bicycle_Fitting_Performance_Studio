@@ -1294,6 +1294,21 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   white-space: nowrap;
 }
 
+/* Auth Card & Teal Link Hover Effects */
+.auth-form-options a,
+.auth-card a,
+a.text-teal {
+  transition: color var(--transition-fast), text-shadow var(--transition-fast), text-decoration-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.auth-form-options a:hover,
+.auth-card a:hover,
+a.text-teal:hover {
+  color: #38f2d8 !important;
+  text-decoration: underline !important;
+  text-shadow: 0 0 12px rgba(0, 217, 192, 0.5);
+}
+
 @media (max-width: 640px) {
   .auth-top-bar {
     max-width: 100%;
@@ -1485,8 +1500,8 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 
 .dash-nav-btn:hover {
-  background: var(--bg-card);
-  color: #FFFFFF;
+  background: var(--bg-card-hover);
+  color: var(--text-primary);
 }
 
 .dash-nav-btn.is-active {
@@ -1643,15 +1658,26 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
 }
 
 .badge-status.status-confirmed {
-  background: rgba(0, 217, 192, 0.15);
-  color: var(--accent-teal);
-  border: 1px solid rgba(0, 217, 192, 0.3);
+  background: rgba(0, 217, 192, 0.18);
+  color: #00F2C3;
+  border: 1px solid rgba(0, 217, 192, 0.4);
+  font-weight: 700;
 }
 
 .badge-status.status-completed {
-  background: rgba(212, 255, 0, 0.15);
-  color: var(--accent-lime);
-  border: 1px solid rgba(212, 255, 0, 0.3);
+  background: rgba(212, 255, 0, 0.18);
+  color: #D4FF00;
+  border: 1px solid rgba(212, 255, 0, 0.4);
+  font-weight: 700;
+}
+
+.dash-garage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
 }
 
 /* Skeleton Loaders */
@@ -1957,9 +1983,18 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   .hero-headline,
   .section-title,
   .card-title,
-  .step-title,
-  .footer-heading {
+  .step-title {
     text-align: center !important;
+  }
+
+  /* Footer headings & links left alignment on Tablet/1024px Views */
+  .footer-grid,
+  .footer-grid > div,
+  .footer-heading,
+  .footer-links,
+  .footer-brand,
+  .footer-brand p {
+    text-align: left !important;
   }
 
   /* Center all Tags, Eyebrow Pills & Chips on Tablet Views */
@@ -2050,7 +2085,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   .philosophy-grid,
   .services-hardware-grid,
   .contact-info-grid,
-  .about-team-grid,
   .about-facility-grid,
   .about-accreditation-grid,
   .tab-card-grid {
@@ -2069,7 +2103,6 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
   .philosophy-grid > *,
   .services-hardware-grid > *,
   .contact-info-grid > *,
-  .about-team-grid > *,
   .about-facility-grid > *,
   .about-accreditation-grid > *,
   .tab-card-grid > * {
@@ -2077,6 +2110,55 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     max-width: calc(50% - 12px) !important;
     width: calc(50% - 12px) !important;
     box-sizing: border-box !important;
+  }
+
+  /* About Page Clinical Faculty Cards (768px, 960px, 1024px Tab Views):
+     2 cards on top row, 1 card centered below, all 3 cards with identical height & width */
+  .about-team-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    grid-auto-rows: 1fr !important;
+    gap: 24px !important;
+    max-width: 100% !important;
+  }
+
+  .about-team-grid > * {
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  .about-team-grid > *:nth-child(1) {
+    grid-column: 1 / span 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .about-team-grid > *:nth-child(2) {
+    grid-column: 3 / span 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .about-team-grid > *:nth-child(3) {
+    grid-column: 2 / span 2 !important;
+    grid-row: 2 !important;
+  }
+
+  .about-team-grid .tilt-card-wrapper {
+    height: 100% !important;
+  }
+
+  .about-team-grid .card-center {
+    height: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+  }
+
+  .about-team-grid .card-meta-list {
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
   }
 
   .hero-content {
@@ -2298,14 +2380,23 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     padding-right: 16px;
   }
 
-  /* Center all Headings on Mobile */
+  /* Center all Headings on Mobile (Except Footer Headings) */
   h1, h2, h3, h4, h5, h6,
   .hero-headline,
   .section-title,
   .card-title,
-  .step-title,
-  .footer-heading {
+  .step-title {
     text-align: center !important;
+  }
+
+  /* Footer headings & links left alignment on Mobile Views */
+  .footer-grid,
+  .footer-grid > div,
+  .footer-heading,
+  .footer-links,
+  .footer-brand,
+  .footer-brand p {
+    text-align: left !important;
   }
 
   /* Center all Tags, Eyebrow Pills & Chips on Mobile */
@@ -2837,4 +2928,76 @@ input[type="date"]::-webkit-calendar-picker-indicator:hover {
     right: auto;
   }
 }
+
+/* ==========================================================================
+   MAP OVERLAY BADGE (RESPONSIVE FOR MOBILE VIEW)
+   ========================================================================== */
+.map-overlay-badge {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  background: rgba(13, 15, 18, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 2;
+  box-sizing: border-box;
+}
+
+.map-overlay-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.map-overlay-title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.map-overlay-address {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.map-overlay-btn {
+  flex-shrink: 0;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .map-overlay-badge {
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    padding: 12px 14px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .map-overlay-btn {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+}
+
 

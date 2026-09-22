@@ -46,9 +46,28 @@ let cdaChartInstance = null;
 function initDashboardCharts() {
   if (typeof Chart === 'undefined') return;
 
+  updateChartInstances();
+
+  // Watch for theme changes dynamically
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'data-theme') {
+        updateDashboardChartThemes();
+      }
+    });
+  });
+  observer.observe(document.documentElement, { attributes: true });
+}
+
+function updateChartInstances() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const gridColor = isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.06)';
+  const tickColor = isLight ? '#4B5563' : '#9CA3AF';
+  const legendColor = isLight ? '#1F2937' : '#9CA3AF';
+
   // Chart 1: Fit Measurement History Timeline
   const fitCtx = document.getElementById('fitHistoryChart');
-  if (fitCtx) {
+  if (fitCtx && !fitChartInstance) {
     fitChartInstance = new Chart(fitCtx, {
       type: 'line',
       data: {
@@ -81,17 +100,17 @@ function initDashboardCharts() {
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            labels: { color: '#9CA3AF', font: { family: 'Inter', weight: 600 } }
+            labels: { color: legendColor, font: { family: 'Inter', weight: 600 } }
           }
         },
         scales: {
           x: {
-            grid: { color: 'rgba(255, 255, 255, 0.06)' },
-            ticks: { color: '#9CA3AF' }
+            grid: { color: gridColor },
+            ticks: { color: tickColor }
           },
           y: {
-            grid: { color: 'rgba(255, 255, 255, 0.06)' },
-            ticks: { color: '#9CA3AF' }
+            grid: { color: gridColor },
+            ticks: { color: tickColor }
           }
         }
       }
@@ -100,7 +119,7 @@ function initDashboardCharts() {
 
   // Chart 2: CdA Aerodynamic Drag vs Velocity
   const cdaCtx = document.getElementById('cdaPerformanceChart');
-  if (cdaCtx) {
+  if (cdaCtx && !cdaChartInstance) {
     cdaChartInstance = new Chart(cdaCtx, {
       type: 'bar',
       data: {
@@ -108,12 +127,9 @@ function initDashboardCharts() {
         datasets: [{
           label: 'Aerodynamic Drag Area CdA (m²)',
           data: [0.298, 0.264, 0.228, 0.198],
-          backgroundColor: [
-            'rgba(255, 255, 255, 0.2)',
-            'rgba(201, 205, 211, 0.4)',
-            '#00D9C0',
-            '#FF5A1F'
-          ],
+          backgroundColor: isLight
+            ? ['#CBD5E1', '#94A3B8', '#00D9C0', '#FF5A1F']
+            : ['rgba(255, 255, 255, 0.3)', 'rgba(201, 205, 211, 0.5)', '#00D9C0', '#FF5A1F'],
           borderRadius: 6
         }]
       },
@@ -126,17 +142,43 @@ function initDashboardCharts() {
         scales: {
           x: {
             grid: { display: false },
-            ticks: { color: '#9CA3AF' }
+            ticks: { color: tickColor }
           },
           y: {
             min: 0.15,
             max: 0.35,
-            grid: { color: 'rgba(255, 255, 255, 0.06)' },
-            ticks: { color: '#9CA3AF' }
+            grid: { color: gridColor },
+            ticks: { color: tickColor }
           }
         }
       }
     });
+  }
+}
+
+function updateDashboardChartThemes() {
+  const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+  const gridColor = isLight ? 'rgba(0, 0, 0, 0.08)' : 'rgba(255, 255, 255, 0.06)';
+  const tickColor = isLight ? '#4B5563' : '#9CA3AF';
+  const legendColor = isLight ? '#1F2937' : '#9CA3AF';
+
+  if (fitChartInstance) {
+    fitChartInstance.options.plugins.legend.labels.color = legendColor;
+    fitChartInstance.options.scales.x.grid.color = gridColor;
+    fitChartInstance.options.scales.x.ticks.color = tickColor;
+    fitChartInstance.options.scales.y.grid.color = gridColor;
+    fitChartInstance.options.scales.y.ticks.color = tickColor;
+    fitChartInstance.update();
+  }
+
+  if (cdaChartInstance) {
+    cdaChartInstance.data.datasets[0].backgroundColor = isLight
+      ? ['#CBD5E1', '#94A3B8', '#00D9C0', '#FF5A1F']
+      : ['rgba(255, 255, 255, 0.3)', 'rgba(201, 205, 211, 0.5)', '#00D9C0', '#FF5A1F'];
+    cdaChartInstance.options.scales.x.ticks.color = tickColor;
+    cdaChartInstance.options.scales.y.grid.color = gridColor;
+    cdaChartInstance.options.scales.y.ticks.color = tickColor;
+    cdaChartInstance.update();
   }
 }
 

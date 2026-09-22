@@ -109,12 +109,14 @@
 [data-theme="light"] .text-gradient {
   background: linear-gradient(135deg, #0D0F12 30%, #374151 70%, var(--accent-volt) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] .text-gradient-teal {
   background: linear-gradient(135deg, #0D0F12 30%, #009688 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
@@ -196,3 +198,89 @@
 [data-theme="light"] input[type="date"]::-webkit-calendar-picker-indicator {
   filter: none;
 }
+
+[data-theme="light"] .text-volt {
+  color: #C2410C;
+}
+
+[data-theme="light"] .text-teal {
+  color: #0F766E;
+}
+
+[data-theme="light"] .text-lime {
+  color: #15803D;
+}
+
+[data-theme="light"] .badge-status.status-confirmed {
+  background: #E6FFFA;
+  color: #007A6C;
+  border-color: #81E6D9;
+  font-weight: 700;
+}
+
+[data-theme="light"] .badge-status.status-completed {
+  background: #F0FDF4;
+  color: #15803D;
+  border-color: #86EFAC;
+  font-weight: 700;
+}
+
+[data-theme="light"] .stat-trend.trend-up {
+  color: #15803D;
+  font-weight: 700;
+}
+
+[data-theme="light"] .stat-trend.trend-neutral {
+  color: #0F766E;
+  font-weight: 700;
+}
+
+/* Light Mode Dashboard Sidebar & Button Hover Fixes */
+[data-theme="light"] .dashboard-main {
+  background: #F9FAFB;
+  color: #0D0F12;
+}
+
+[data-theme="light"] .dash-nav-btn {
+  color: #4B5563;
+}
+
+[data-theme="light"] .dash-nav-btn:hover {
+  background: #E5E7EB;
+  color: #0D0F12 !important;
+}
+
+[data-theme="light"] .dash-nav-btn.is-active {
+  background: var(--accent-volt);
+  color: #FFFFFF !important;
+}
+
+[data-theme="light"] .dash-nav-btn.btn-logout {
+  color: #DC2626;
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+[data-theme="light"] .dash-nav-btn.btn-logout:hover {
+  background: #FEE2E2;
+  color: #991B1B !important;
+}
+
+[data-theme="light"] .dash-upcoming-card {
+  background: #FFFFFF;
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .btn-secondary {
+  background: #FFFFFF;
+  color: #1F2937;
+  border-color: #D1D5DB;
+}
+
+[data-theme="light"] .btn-secondary:hover {
+  background: #F3F4F6;
+  border-color: #0F766E;
+  color: #0F766E !important;
+}
+
+
