@@ -192,6 +192,10 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   position: relative;
   overflow: hidden;
+  background-color: var(--bg-primary);
+  background-image: 
+    radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.025) 0%, transparent 60%),
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.015) 0%, transparent 50%);
 }
 
 .section-header {
@@ -223,8 +227,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .section-title {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
   margin-bottom: 18px;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 .section-desc {
@@ -270,7 +280,7 @@ h1, h2, h3, h4, h5, h6 {
   gap: 12px;
   font-family: var(--font-heading);
   font-size: 1.35rem;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -0.01em;
   color: #FFFFFF;
 }
@@ -485,7 +495,7 @@ h1, h2, h3, h4, h5, h6 {
 .btn-teal {
   background: linear-gradient(135deg, var(--accent-teal) 0%, #009688 100%);
   color: #0D0F12;
-  font-weight: 800;
+  font-weight: 700;
   box-shadow: 0 4px 18px var(--accent-teal-glow);
 }
 
@@ -639,14 +649,7 @@ h1, h2, h3, h4, h5, h6 {
    3D Canvas Hero & Telemetry Overlays
    -------------------------------------------------------------------------- */
 .hero-canvas-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  pointer-events: none;
-  opacity: 0.85;
+  display: none !important;
 }
 
 .hero-grid {
@@ -664,14 +667,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero-headline {
-  font-size: clamp(2rem, 5.5vw, 4.25rem);
-  font-family: var(--font-display);
-  font-weight: 800;
-  line-height: 1.08;
+  font-size: clamp(2rem, 3.6vw, 3rem);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.18;
   margin-bottom: 24px;
   text-transform: uppercase;
+  letter-spacing: -0.015em;
   overflow-wrap: break-word;
-  word-break: normal;
+  word-break: keep-all;
+  hyphens: none;
 }
 
 .hero-subtitle {
@@ -703,13 +708,14 @@ h1, h2, h3, h4, h5, h6 {
   display: inline-flex;
   align-items: center;
   gap: 14px;
-  background: rgba(26, 29, 33, 0.8);
-  border: 1px solid var(--border-subtle);
+  background: var(--bg-surface-glass);
+  border: 1px solid var(--border-medium);
   border-radius: var(--radius-full);
   padding: 8px 18px;
   font-size: 0.84375rem;
   color: var(--text-secondary);
   backdrop-filter: blur(8px);
+  box-shadow: var(--shadow-sm);
 }
 
 .pulse-dot {
@@ -1793,6 +1799,33 @@ a.text-teal:hover {
 }
 
 /* --------------------------------------------------------------------------
+   Phone & Direct Contact Typography (Clean Proportions & Balanced Weights)
+   -------------------------------------------------------------------------- */
+a[href^="tel:"],
+.contact-phone-link {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  display: inline-block;
+  text-decoration: none;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+a[href^="tel:"]:hover,
+.contact-phone-link:hover {
+  text-decoration: underline;
+}
+
+a[href^="mailto:"],
+.contact-email-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+/* --------------------------------------------------------------------------
    RESPONSIVE BREAKPOINTS (STRICTLY INDEPENDENT QA)
    - Mobile: < 640px
    - Tablet: 640px – 1024px
@@ -2521,12 +2554,12 @@ a.text-teal:hover {
   }
 
   .hero-headline {
-    font-size: clamp(1.65rem, 6.5vw, 2.25rem);
-    line-height: 1.15;
+    font-size: clamp(1.65rem, 5.5vw, 2.125rem);
+    line-height: 1.2;
     margin-bottom: 16px;
     overflow-wrap: break-word;
-    word-break: normal;
-    hyphens: auto;
+    word-break: keep-all;
+    hyphens: none;
   }
 
   .hero-subtitle,
@@ -2999,5 +3032,683 @@ a.text-teal:hover {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   SERVICES PAGE RESPONSIVE UTILITIES
+   ========================================================================== */
+@media (max-width: 960px) {
+  .service-pillar-row {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+  }
+  .service-pillar-row .pillar-img-col {
+    order: 1 !important;
+  }
+  .service-pillar-row .pillar-text-col {
+    order: 2 !important;
+  }
+  .service-faq-grid {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+  }
+}
+
+@media (max-width: 580px) {
+  .pillar-metric-boxes {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   ABOUT PAGE: METHODOLOGY, BICYCLES HANDLED & PERFORMANCE MATRICES
+   ========================================================================== */
+.about-team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.about-facility-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about-accreditation-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.methodology-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.methodology-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 34px 24px;
+  position: relative;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.methodology-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-volt-glow);
+}
+
+.methodology-card.teal-card:hover {
+  border-color: var(--border-teal);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-teal-glow);
+}
+
+.methodology-num {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--accent-volt);
+  margin-bottom: 16px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  width: 100%;
+  opacity: 0.95;
+}
+
+.methodology-card.teal-card .methodology-num {
+  color: var(--accent-teal);
+}
+
+.methodology-card h3 {
+  text-align: center;
+  width: 100%;
+}
+
+.methodology-card p {
+  text-align: center;
+}
+
+.methodology-output {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  width: 100%;
+}
+
+
+.bikes-handled-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.bike-category-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 30px 24px;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+}
+
+.bike-category-card h3 {
+  text-align: center;
+}
+
+.bike-category-card p {
+  text-align: center;
+}
+
+
+.bike-category-card:hover {
+  border-color: var(--border-accent);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.performance-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.performance-impact-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 32px 24px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all var(--transition-fast);
+  height: 100%;
+}
+
+.performance-impact-card:hover {
+  border-color: var(--border-teal);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-teal-glow);
+  transform: translateY(-4px);
+}
+
+.performance-metric-val {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 800;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 1024px) {
+  .methodology-grid,
+  .performance-impact-grid,
+  .types-fittings-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .bikes-handled-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .methodology-grid,
+  .performance-impact-grid,
+  .bikes-handled-grid,
+  .types-fittings-grid,
+  .about-team-grid,
+  .about-facility-grid,
+  .about-accreditation-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ==========================================================================
+   CONTACT PAGE HERO WITH CONCIERGE LOUNGE IMAGE
+   ========================================================================== */
+.contact-hero-grid {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 960px) {
+  .contact-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px !important;
+  }
+}
+
+/* ==========================================================================
+   HOME 2: ATHLETE JOURNEY HERO (WIDE PANORAMIC THEATER + FLOATING STATS)
+   ========================================================================== */
+.athlete-hero-section {
+  padding-top: 50px;
+  padding-bottom: 70px;
+  background-color: var(--bg-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.athlete-hero-header {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto 32px;
+}
+
+.athlete-hero-headline {
+  font-size: clamp(2.15rem, 4vw, 3.4rem);
+  font-family: var(--font-heading);
+  font-weight: 800;
+  line-height: 1.15;
+  margin-top: 14px;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  overflow-wrap: break-word;
+  word-break: keep-all;
+  hyphens: none;
+}
+
+.athlete-hero-subtitle {
+  font-size: clamp(1.05rem, 1.35vw, 1.2rem);
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 760px;
+  margin: 0 auto 28px;
+}
+
+.athlete-hero-ctas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.athlete-discipline-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.discipline-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: var(--bg-surface-glass);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-full);
+  font-size: 0.78125rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.discipline-pill:hover {
+  border-color: var(--accent-teal);
+  color: var(--accent-teal);
+  transform: translateY(-1px);
+}
+
+.athlete-hero-stage {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--border-accent);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4), 0 0 50px rgba(0, 217, 192, 0.15);
+  margin-bottom: 24px;
+}
+
+.athlete-hero-stage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.8s ease;
+}
+
+.athlete-hero-stage:hover img {
+  transform: scale(1.025);
+}
+
+.athlete-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(13, 15, 18, 0.2) 0%, rgba(13, 15, 18, 0.35) 50%, rgba(13, 15, 18, 0.75) 100%);
+  pointer-events: none;
+}
+
+.athlete-floating-card {
+  position: absolute;
+  z-index: 10;
+  background: rgba(18, 21, 26, 0.90);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+  transition: all 0.3s ease;
+  max-width: 290px;
+}
+
+.athlete-floating-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-teal);
+  box-shadow: 0 16px 40px rgba(0, 217, 192, 0.25);
+}
+
+.card-pos-top-left {
+  top: 28px;
+  left: 28px;
+}
+
+.card-pos-top-right {
+  top: 28px;
+  right: 28px;
+}
+
+.card-pos-bottom-left {
+  bottom: 28px;
+  left: 28px;
+}
+
+.card-pos-bottom-right {
+  bottom: 28px;
+  right: 28px;
+}
+
+.athlete-impact-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.impact-strip-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 22px 20px;
+  text-align: center;
+  transition: all var(--transition-fast);
+}
+
+.impact-strip-item:hover {
+  border-color: var(--accent-teal);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.impact-strip-val {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.impact-strip-label {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .athlete-floating-card {
+    padding: 12px 16px;
+    max-width: 240px;
+  }
+  .card-pos-top-left { top: 18px; left: 18px; }
+  .card-pos-top-right { top: 18px; right: 18px; }
+  .card-pos-bottom-left { bottom: 18px; left: 18px; }
+  .card-pos-bottom-right { bottom: 18px; right: 18px; }
+}
+
+@media (max-width: 860px) {
+  .athlete-hero-stage {
+    height: 420px;
+  }
+  .card-pos-top-right,
+  .card-pos-bottom-left {
+    display: none;
+  }
+  .athlete-impact-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .athlete-hero-stage {
+    height: 320px;
+  }
+  .card-pos-top-left,
+  .card-pos-bottom-right {
+    padding: 10px 12px;
+    max-width: 200px;
+  }
+  .athlete-impact-strip {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   HOME 2: ATHLETE SERVICES SECTION (ALTERNATIVE 2x2 GOAL-ORIENTED DESIGN)
+   ========================================================================== */
+.athlete-services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.athlete-service-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.athlete-service-card:hover {
+  border-color: var(--accent-teal);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 30px rgba(0, 217, 192, 0.12);
+}
+
+.athlete-service-card.card-accent-volt:hover {
+  border-color: var(--accent-volt);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.35), 0 0 30px rgba(255, 90, 31, 0.12);
+}
+
+.service-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.service-discipline-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(0, 217, 192, 0.12);
+  color: var(--accent-teal);
+}
+
+.service-discipline-tag.tag-volt {
+  background: rgba(255, 90, 31, 0.12);
+  color: var(--accent-volt);
+}
+
+.service-discipline-tag.tag-lime {
+  background: rgba(184, 255, 46, 0.12);
+  color: var(--accent-lime);
+}
+
+.service-duration-badge {
+  font-size: 0.78125rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.athlete-service-card h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--text-primary);
+}
+
+.service-problem-text {
+  font-size: 0.9375rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-feature-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 22px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.service-feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.service-feature-item svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.service-outcome-banner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed var(--border-medium);
+  border-radius: var(--radius-sm);
+  padding: 12px 16px;
+  margin-bottom: 24px;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.service-card-action {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .athlete-services-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   DIAGNOSTIC CONTRAST TABLE (ZERO HORIZONTAL SCROLL)
+   ========================================================================== */
+.diagnostic-contrast-wrapper {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  margin-bottom: 30px;
+  overflow: hidden; /* Zero horizontal scrollbar */
+  box-shadow: var(--shadow-sm);
+}
+
+.diagnostic-contrast-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  table-layout: fixed;
+}
+
+.diagnostic-contrast-table th {
+  background: var(--bg-secondary);
+  color: var(--text-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.75rem;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: normal;
+}
+
+.diagnostic-contrast-table td {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  white-space: normal !important;
+  line-height: 1.55;
+  font-size: 0.9375rem;
+  vertical-align: top;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.diagnostic-contrast-table tr:last-child td {
+  border-bottom: none;
+}
+
+.diagnostic-contrast-table tr:hover td {
+  background: rgba(255, 255, 255, 0.02);
+  color: #FFFFFF;
+}
+
+@media (max-width: 720px) {
+  .diagnostic-contrast-table,
+  .diagnostic-contrast-table thead,
+  .diagnostic-contrast-table tbody,
+  .diagnostic-contrast-table tr,
+  .diagnostic-contrast-table td {
+    display: block;
+    width: 100% !important;
+  }
+  .diagnostic-contrast-table thead {
+    display: none;
+  }
+  .diagnostic-contrast-table tr {
+    padding: 18px;
+    border-bottom: 1px solid var(--border-medium);
+  }
+  .diagnostic-contrast-table td {
+    padding: 8px 0;
+    border: none;
+  }
+  .diagnostic-contrast-table td:first-child {
+    font-weight: 800;
+    color: var(--text-primary);
+    font-size: 1.05rem;
+    margin-bottom: 6px;
+    border-bottom: 1px dashed var(--border-subtle);
+    padding-bottom: 8px;
+  }
+  .diagnostic-contrast-table td:nth-child(2)::before {
+    content: "Standard Bike Shop: ";
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.8125rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+  .diagnostic-contrast-table td:nth-child(3)::before {
+    content: "VELOMETRIC Studio Lab: ";
+    font-weight: 700;
+    color: var(--accent-volt);
+    font-size: 0.8125rem;
+    display: block;
+    margin-bottom: 2px;
+  }
+}
+
+
+
+
+
+
 
 

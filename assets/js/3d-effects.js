@@ -173,56 +173,7 @@ function initHero3DCanvas() {
     bikeGroup.scale.set(0.85, 0.85, 0.85);
     bikeGroup.position.set(8, 0, 0);
 
-    // Kinematic Biomechanical Data Particle Stream
-    const particleCount = 320;
-    const particleGeom = new THREE.BufferGeometry();
-    const positions = new Float32Array(particleCount * 3);
-    const colors = new Float32Array(particleCount * 3);
-
-    for (let i = 0; i < particleCount; i++) {
-      positions[i * 3] = (Math.random() - 0.5) * 55;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 38;
-      positions[i * 3 + 2] = (Math.random() - 0.5) * 28;
-
-      const r = Math.random();
-      if (r < 0.4) {
-        colors[i * 3] = 1.0; colors[i * 3 + 1] = 0.35; colors[i * 3 + 2] = 0.12;
-      } else if (r < 0.75) {
-        colors[i * 3] = 0.0; colors[i * 3 + 1] = 0.85; colors[i * 3 + 2] = 0.75;
-      } else {
-        colors[i * 3] = 0.83; colors[i * 3 + 1] = 1.0; colors[i * 3 + 2] = 0.0;
-      }
-    }
-
-    particleGeom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-    particleGeom.setAttribute('color', new THREE.BufferAttribute(colors, 3));
-
-    const particleMat = new THREE.PointsMaterial({
-      size: 0.4,
-      vertexColors: true,
-      transparent: true,
-      opacity: 0.85
-    });
-
-    const particles = new THREE.Points(particleGeom, particleMat);
-    mainGroup.add(particles);
-
-  } else {
-    // HOME 2: Dynamic Kinetic Wave Velocity Mesh
-    const meshGeometry = new THREE.PlaneGeometry(60, 40, 28, 20);
-    const meshMaterial = new THREE.MeshBasicMaterial({
-      color: 0x00D9C0,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.35
-    });
-    const kineticPlane = new THREE.Mesh(meshGeometry, meshMaterial);
-    kineticPlane.rotation.x = -Math.PI / 3;
-    kineticPlane.position.y = -6;
-    mainGroup.add(kineticPlane);
-
-    // Dynamic wave animation loop state
-    scene.userData.kineticPlane = kineticPlane;
+    // Particle stream and wireframe grid removed per client request for clean, uncluttered background
   }
 
   // Mouse interaction listener
