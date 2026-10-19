@@ -218,7 +218,7 @@
 }
 
 [data-theme="light"] .dashboard-sidebar {
-  background: #FFFFFF;
+  background: #FFFFFF !important;
 }
 
 [data-theme="light"] .dashboard-rider-card {
@@ -326,6 +326,35 @@
   background: #FFFFFF;
   border-color: rgba(0, 0, 0, 0.1);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .dash-welcome-card {
+  background: linear-gradient(135deg, rgba(0, 217, 192, 0.08) 0%, rgba(234, 88, 12, 0.03) 100%);
+  border-color: rgba(0, 168, 150, 0.28);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .dash-welcome-icon {
+  background: rgba(0, 168, 150, 0.12);
+  color: #008775;
+  border-color: rgba(0, 168, 150, 0.25);
+}
+
+[data-theme="light"] .dash-welcome-eyebrow {
+  color: #008775;
+}
+
+[data-theme="light"] .btn-primary {
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+  color: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(234, 88, 12, 0.35);
+  border: 1px solid rgba(234, 88, 12, 0.2);
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: linear-gradient(135deg, #C2410C 0%, #9A3412 100%);
+  box-shadow: 0 6px 20px rgba(234, 88, 12, 0.45);
+  color: #FFFFFF !important;
 }
 
 [data-theme="light"] .btn-secondary {
@@ -465,6 +494,19 @@
 [data-theme="light"] .diagnostic-contrast-table tr:hover td {
   background: rgba(0, 0, 0, 0.02);
   color: #111827;
+}
+
+[data-theme="light"] .social-link {
+  background: #FFFFFF;
+  border-color: #E2E8F0;
+  color: #475569;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .social-link:hover {
+  border-color: var(--accent-volt);
+  color: var(--accent-volt);
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
 }
 
 

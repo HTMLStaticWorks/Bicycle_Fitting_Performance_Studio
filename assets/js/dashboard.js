@@ -271,7 +271,7 @@ function initLogout() {
     btn.addEventListener('click', (e) => {
       e.preventDefault();
       localStorage.removeItem('velometric_auth');
-      window.location.href = 'login.html';
+      window.location.href = 'index.html';
     });
   });
 }

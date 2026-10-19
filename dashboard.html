@@ -26,7 +26,7 @@
         <span>VELOMETRIC</span>
       </a>
 
-      <div class="nav-actions">
+      <div class="nav-actions dash-nav-actions">
         <button class="rtl-toggle-btn" aria-label="Toggle RTL Layout">RTL</button>
         <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -45,6 +45,9 @@
           <div class="dash-identity-rider">
             <div class="rider-avatar dash-rider-avatar">MC</div>
             <div class="dash-rider-details">
+              <div class="dash-welcome-eyebrow">
+                <span>👋 Welcome back, Mark!</span>
+              </div>
               <div class="dash-rider-name-row">
                 <h1 class="dash-rider-name">Mark Cavendish</h1>
                 <span class="badge-status status-completed">Pro Athlete Tier</span>
@@ -125,6 +128,26 @@
           
           <!-- SUB-MODULE 1: OVERVIEW -->
           <div class="dash-panel is-active" id="panel-overview">
+            
+            <!-- Athlete Portal Welcome Banner -->
+            <div class="dash-welcome-card">
+              <div class="dash-welcome-content">
+                <div class="dash-welcome-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                </div>
+                <div class="dash-welcome-text">
+                  <h3>Welcome back, Mark! All telemetry data is synced.</h3>
+                  <p>Your biomechanical fit coordinates, 3D laser angles, and aerodynamic CdA baselines are up to date. You have an upcoming studio session on <strong>October 22, 2026</strong>.</p>
+                </div>
+              </div>
+              <div class="dash-welcome-actions">
+                <button class="btn btn-primary btn-sm" onclick="document.querySelector('[data-dash-target=\'panel-booking\']').click()">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line></svg>
+                  <span>View Appointments</span>
+                </button>
+              </div>
+            </div>
+
             <h2 style="font-size: 1.35rem; margin-bottom: 20px;">Biomechanical Telemetry Overview</h2>
             
             <div class="dash-stat-grid">
@@ -358,7 +381,7 @@
                     Your session on Sep 14, 2026 includes free tweaks until November 14, 2026.
                   </p>
                 </div>
-                <button class="btn btn-teal btn-sm" onclick="alert('Priority follow-up bay requested. You will receive an SMS within 2 hours.')">Request Priority Fine-Tune</button>
+                <button class="btn btn-primary btn-sm" onclick="alert('Priority follow-up bay requested. You will receive an SMS within 2 hours.')">Request Priority Fine-Tune</button>
               </div>
             </div>
 
@@ -368,7 +391,7 @@
                 Note any sensations experienced during your first 200km post-fit (e.g. saddle pressure after hour 3, wrist fatigue, or cleat angle):
               </p>
               <textarea class="form-textarea" rows="4" placeholder="e.g. Did 120km Saturday. Zero lower back pain. Felt slight pressure on right big toe on climbs..."></textarea>
-              <button class="btn btn-secondary btn-sm" style="margin-top: 14px;" onclick="alert('Observation note logged to Dr. Marcus Vance.')">Save Note for Fitter</button>
+              <button class="btn btn-primary btn-sm" style="margin-top: 14px;" onclick="alert('Observation note logged to Dr. Marcus Vance.')">Save Note for Fitter</button>
             </div>
           </div>
 

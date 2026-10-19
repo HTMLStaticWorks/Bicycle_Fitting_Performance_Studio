@@ -21,14 +21,14 @@
 
   <main id="main-content" style="padding: 40px 16px 60px; width: 100%;">
     <!-- Utility Controls (RTL + Theme Toggle) fully outside card box -->
-    <div class="auth-top-bar wide">
+    <div class="auth-top-bar">
       <button class="rtl-toggle-btn" aria-label="Toggle RTL Layout">RTL</button>
       <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
       </button>
     </div>
 
-    <div class="auth-card wide">
+    <div class="auth-card">
       
       <!-- Logo Header -->
       <div style="text-align: center; margin-bottom: 28px;">
@@ -38,7 +38,7 @@
           </div>
           <span>VELOMETRIC</span>
         </a>
-        <h1 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 8px; color: var(--text-primary);">Create Athlete Account</h1>
+        <h1 class="auth-card-title" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Create Athlete Account</h1>
         <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; margin: 0;">
           Register to manage your appointments, view clinical telemetry records, and access care instructions.
         </p>
@@ -53,19 +53,18 @@
           <div class="form-error"></div>
         </div>
 
-        <!-- Email & Phone 2-Col Grid -->
-        <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="form-group">
-            <label class="form-label" for="reg-email-page">Email Address <span style="color: var(--accent-volt);">*</span></label>
-            <input type="email" id="reg-email-page" class="form-input" placeholder="sarah@example.com" required>
-            <div class="form-error"></div>
-          </div>
+        <!-- Email Address -->
+        <div class="form-group">
+          <label class="form-label" for="reg-email-page">Email Address <span style="color: var(--accent-volt);">*</span></label>
+          <input type="email" id="reg-email-page" class="form-input" placeholder="sarah@example.com" required>
+          <div class="form-error"></div>
+        </div>
 
-          <div class="form-group">
-            <label class="form-label" for="reg-phone">Phone Number <span style="color: var(--accent-volt);">*</span></label>
-            <input type="tel" id="reg-phone" class="form-input" placeholder="(555) 234-5678" required>
-            <div class="form-error"></div>
-          </div>
+        <!-- Phone Number -->
+        <div class="form-group">
+          <label class="form-label" for="reg-phone">Phone Number <span style="color: var(--accent-volt);">*</span></label>
+          <input type="tel" id="reg-phone" class="form-input" placeholder="(555) 234-5678" required>
+          <div class="form-error"></div>
         </div>
 
         <!-- Date of Birth -->
@@ -75,19 +74,18 @@
           <div class="form-error"></div>
         </div>
 
-        <!-- Password & Confirm Password 2-Col Grid -->
-        <div class="form-row-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="form-group">
-            <label class="form-label" for="reg-pass-page">Password <span style="color: var(--accent-volt);">*</span></label>
-            <input type="password" id="reg-pass-page" class="form-input" placeholder="••••••••" required>
-            <div class="form-error"></div>
-          </div>
+        <!-- Password -->
+        <div class="form-group">
+          <label class="form-label" for="reg-pass-page">Password <span style="color: var(--accent-volt);">*</span></label>
+          <input type="password" id="reg-pass-page" class="form-input" placeholder="••••••••" required>
+          <div class="form-error"></div>
+        </div>
 
-          <div class="form-group">
-            <label class="form-label" for="reg-pass-confirm">Confirm Password <span style="color: var(--accent-volt);">*</span></label>
-            <input type="password" id="reg-pass-confirm" class="form-input" placeholder="••••••••" required>
-            <div class="form-error"></div>
-          </div>
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label class="form-label" for="reg-pass-confirm">Confirm Password <span style="color: var(--accent-volt);">*</span></label>
+          <input type="password" id="reg-pass-confirm" class="form-input" placeholder="••••••••" required>
+          <div class="form-error"></div>
         </div>
 
         <!-- Terms Checkbox -->

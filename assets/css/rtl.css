@@ -75,6 +75,19 @@
   text-align: right;
 }
 
+[dir="rtl"] .services-cards-grid .card-center,
+[dir="rtl"] .services-cards-grid .card-title,
+[dir="rtl"] .services-cards-grid .card-desc,
+[dir="rtl"] .services-cards-grid .card-meta-list {
+  text-align: right;
+  align-items: flex-start;
+}
+
+[dir="rtl"] .services-cards-grid .card-meta-item {
+  text-align: right;
+  justify-content: flex-start;
+}
+
 [dir="rtl"] .telemetry-chip.chip-top {
   right: auto;
   left: 20px;

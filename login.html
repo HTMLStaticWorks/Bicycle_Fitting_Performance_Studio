@@ -38,34 +38,24 @@
           </div>
           <span>VELOMETRIC</span>
         </a>
-        <h1 style="font-size: 1.75rem; font-weight: 800; margin-bottom: 8px; color: var(--text-primary);">Athlete Portal Login</h1>
+        <h1 class="auth-card-title" style="font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; color: var(--text-primary);">Athlete Portal Login</h1>
         <p style="color: var(--text-secondary); font-size: 0.875rem; line-height: 1.6; margin: 0;">
           Access your appointments, telemetry records, and treatment plans securely.
         </p>
       </div>
 
-      <!-- Quick Demo Login Hint -->
-      <div style="background: rgba(0, 217, 192, 0.08); border: 1px dashed var(--accent-teal); border-radius: var(--radius-sm); padding: 12px; margin-bottom: 24px; text-align: center;">
-        <p style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 8px;">
-          Testing site functionality? Click below to populate demo rider credentials:
-        </p>
-        <button id="quick-demo-login-btn" class="btn btn-secondary btn-sm" style="width: 100%; justify-content: center; font-size: 0.8125rem;">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          <span>Fill Demo Rider (Mark Cavendish)</span>
-        </button>
-      </div>
 
       <!-- Login Form -->
       <form id="rider-login-form" data-validate action="dashboard.html">
         <div class="form-group">
           <label class="form-label" for="login-email">Email Address</label>
-          <input type="email" id="login-email" class="form-input" placeholder="sarah.jenkins@example.com" value="mark.cavendish@velometric.com" required>
+          <input type="email" id="login-email" class="form-input" placeholder="sarah.jenkins@example.com" required>
           <div class="form-error"></div>
         </div>
 
         <div class="form-group">
           <label class="form-label" for="login-pass">Password</label>
-          <input type="password" id="login-pass" class="form-input" placeholder="••••••••••••" value="password123" required>
+          <input type="password" id="login-pass" class="form-input" placeholder="••••••••••••" required>
           <div class="form-error"></div>
         </div>
 
@@ -117,10 +107,6 @@
   <script src="assets/js/3d-effects.js"></script>
   <script src="assets/js/main.js"></script>
   <script>
-    document.getElementById('quick-demo-login-btn').addEventListener('click', () => {
-      document.getElementById('login-email').value = 'mark.cavendish@velometric.com';
-      document.getElementById('login-pass').value = 'password123';
-    });
 
     document.getElementById('rider-login-form').addEventListener('submit', (e) => {
       e.preventDefault();
