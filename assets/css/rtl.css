@@ -103,8 +103,22 @@
   border-left: 1px solid var(--border-subtle);
 }
 
+[dir="rtl"] .dash-mobile-select-trigger {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .dash-mobile-select-current {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .dash-select-badge {
+  margin-left: 0 !important;
+  margin-right: 6px !important;
+}
+
 [dir="rtl"] .dash-nav-btn {
   text-align: right;
+  flex-direction: row !important;
 }
 
 [dir="rtl"] .data-table {
@@ -118,3 +132,12 @@
 [dir="rtl"] .btn svg {
   transform: scaleX(-1);
 }
+
+[dir="rtl"] .dash-table-header-row {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .table-scroll-hint-pill svg {
+  transform: scaleX(-1);
+}
+

@@ -14,11 +14,66 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* --------------------------------------------------------------------------
-   1. Dashboard Sub-Module Navigation
+   1. Dashboard Sub-Module Navigation & Mobile Module Selector
    -------------------------------------------------------------------------- */
 function initDashboardRouting() {
   const navBtns = document.querySelectorAll('.dash-nav-btn[data-dash-target]');
   const panels = document.querySelectorAll('.dash-panel');
+  const trigger = document.getElementById('dashMobileNavTrigger');
+  const navList = document.getElementById('dashNavList');
+
+  function updateMobileTrigger(btn) {
+    if (!trigger || !btn) return;
+    const icon = btn.querySelector('svg');
+    const label = btn.querySelector('span');
+    const triggerIcon = trigger.querySelector('.dash-select-icon');
+    const triggerLabel = trigger.querySelector('.dash-select-label');
+
+    if (icon && triggerIcon) {
+      triggerIcon.innerHTML = icon.outerHTML;
+    }
+    if (label && triggerLabel) {
+      triggerLabel.textContent = label.textContent.trim();
+    }
+  }
+
+  function closeMobileDropdown() {
+    if (navList && trigger) {
+      navList.classList.remove('is-open');
+      trigger.classList.remove('is-active');
+      trigger.setAttribute('aria-expanded', 'false');
+    }
+  }
+
+  // Set initial trigger state from active button
+  const initialActive = document.querySelector('.dash-nav-btn.is-active');
+  if (initialActive) {
+    updateMobileTrigger(initialActive);
+  }
+
+  // Mobile trigger toggle listener
+  if (trigger && navList) {
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = navList.classList.toggle('is-open');
+      trigger.classList.toggle('is-active', isOpen);
+      trigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!trigger.contains(e.target) && !navList.contains(e.target)) {
+        closeMobileDropdown();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileDropdown();
+      }
+    });
+  }
 
   navBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -33,8 +88,37 @@ function initDashboardRouting() {
           p.classList.add('is-active');
         }
       });
+
+      // Synchronize mobile trigger and close dropdown
+      updateMobileTrigger(btn);
+      closeMobileDropdown();
+
+      // On mobile view, smooth scroll to the active panel content
+      if (window.innerWidth <= 640) {
+        const activePanel = document.getElementById(target);
+        if (activePanel) {
+          const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 64;
+          const sidebarHeight = trigger ? trigger.offsetHeight + 20 : 60;
+          const targetOffset = activePanel.getBoundingClientRect().top + window.pageYOffset - (navHeight + sidebarHeight);
+          window.scrollTo({ top: targetOffset, behavior: 'smooth' });
+        }
+      }
     });
   });
+
+  // Check URL hash on page load (e.g. #panel-booking)
+  function handleUrlHash() {
+    const rawHash = window.location.hash.replace('#', '');
+    if (rawHash) {
+      const matchedBtn = document.querySelector(`.dash-nav-btn[data-dash-target="${rawHash}"]`);
+      if (matchedBtn) {
+        matchedBtn.click();
+      }
+    }
+  }
+
+  handleUrlHash();
+  window.addEventListener('hashchange', handleUrlHash);
 }
 
 /* --------------------------------------------------------------------------

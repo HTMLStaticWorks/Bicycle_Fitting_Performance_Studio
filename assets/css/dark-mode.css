@@ -221,6 +221,23 @@
   background: #FFFFFF !important;
 }
 
+[data-theme="light"] .dash-mobile-select-trigger {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  color: #0D0F12 !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .dash-mobile-select-current {
+  color: #0D0F12 !important;
+}
+
+[data-theme="light"] .dash-nav-items {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.12) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12) !important;
+}
+
 [data-theme="light"] .dashboard-rider-card {
   background: #F8F9FA;
 }
@@ -507,6 +524,32 @@
   border-color: var(--accent-volt);
   color: var(--accent-volt);
   box-shadow: 0 4px 12px rgba(234, 88, 12, 0.2);
+}
+
+/* Light Mode Booking Card & Table Horizontal Scrollbar */
+[data-theme="light"] .dash-booking-card {
+  background: #FFFFFF !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04) !important;
+}
+
+[data-theme="light"] .table-scroll-hint-pill {
+  color: var(--accent-volt) !important;
+  background: rgba(234, 88, 12, 0.1) !important;
+  border-color: rgba(234, 88, 12, 0.25) !important;
+}
+
+[data-theme="light"] .data-table-wrapper {
+  scrollbar-color: var(--accent-volt) rgba(0, 0, 0, 0.06) !important;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.03) !important;
+}
+
+[data-theme="light"] .data-table-wrapper::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05) !important;
+}
+
+[data-theme="light"] .data-table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--accent-volt) !important;
 }
 
 
